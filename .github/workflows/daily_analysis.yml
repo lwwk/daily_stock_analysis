@@ -1,18 +1,18 @@
 name: 每日股票分析
 
-on:
+于:
   # 定时触发 - 每天北京时间 18:00 (UTC 10:00)
   schedule:
-    - cron: '0 10 * * 1-5'  # 周一到周五，UTC 10:00 = 北京时间 18:00
-  
+    - cron: '0 4 * * 1-5'  # 周一到周五，UTC 10:00 = 北京时间 12:00
+    - cron: '0 9 * * 1-5'  # 周一到周五，UTC 10:00 = 北京时间 17:00
   # 手动触发
   workflow_dispatch:
     inputs:
       mode:
         description: '运行模式'
         required: true
-        default: 'full'
-        type: choice
+        默认: 'full'
+        输入: choice
         options:
           - full          # 完整分析（股票+大盘）
           - market-only   # 仅大盘复盘
@@ -82,7 +82,7 @@ jobs:
 
           
           # 自选股列表 (从 secrets 或使用默认值)
-          STOCK_LIST: ${{ secrets.STOCK_LIST || '600519' }}
+          STOCK_LIST: ${{ secrets.STOCK_LIST || '002155' }}
           
           # 其他配置
           LOG_LEVEL: INFO
